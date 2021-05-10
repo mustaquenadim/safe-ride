@@ -1,8 +1,7 @@
-import { Container, CssBaseline, Grid, makeStyles } from '@material-ui/core';
+import { Card, CardContent, Container, CssBaseline, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Timeline, TimelineItem, TimelineSeparator, TimelineDot, TimelineConnector, TimelineContent } from '@material-ui/lab';
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import { UserContext } from '../../App';
-import vehicles from '../../Data/Data.json';
 import GoogleMap from '../GoogleMap/GoogleMap';
 
 const useStyles = makeStyles(() => ({
@@ -13,14 +12,8 @@ const useStyles = makeStyles(() => ({
 
 const Checkout = () => {
     const {getRide, setRide} = useContext(UserContext);
-    console.log(getRide);
     const classes = useStyles();
-    const { id } = useParams();
-    const [vehicle, setVehicle] = useState({});
-    useEffect(() => {
-        const info = vehicles.filter((type) => id == type.id);
-        setVehicle(info[0]);
-    }, [id]);
+    console.log(getRide);
     return (
         <div>
             <React.Fragment>
@@ -29,7 +22,39 @@ const Checkout = () => {
                 <div className={classes.root}>
                     <Grid container spacing={3} direction="row" justify="center" alignItems="center">
                         <Grid item xs={12} md={3} lg={3}>
-                            <h1>Checkout</h1>
+                            <Paper elevation={0} color="primary">
+                                <Timeline>
+                                    <TimelineItem>
+                                        <TimelineSeparator>
+                                        <TimelineDot />
+                                        <TimelineConnector />
+                                        </TimelineSeparator>
+                                        <TimelineContent>{getRide.from}</TimelineContent>
+                                    </TimelineItem>
+                                    <TimelineItem>
+                                        <TimelineSeparator>
+                                        <TimelineDot />
+                                        </TimelineSeparator>
+                                        <TimelineContent>{getRide.to}</TimelineContent>
+                                    </TimelineItem>
+                                </Timeline>
+                                <Card className={classes.root} style={{backgroundColor: 'yellow'}}>
+                                    <CardContent>
+                                        <Typography className={classes.title} color="textSecondary" gutterBottom>Date: {getRide.date}</Typography>
+                                        <Typography className={classes.title} color="textSecondary" gutterBottom>Time: {getRide.time}</Typography>
+                                    </CardContent>
+                                </Card>
+                                <Card className={classes.root} style={{backgroundColor: 'yellow'}}>
+                                    <CardContent>
+                                    <Grid container spacing={3}>
+                                        <Grid item xs={6} sm={3}></Grid>
+                                        <Grid item xs={6} sm={3}></Grid>
+                                        <Grid item xs={6} sm={3}></Grid>
+                                        <Grid item xs={6} sm={3}></Grid>
+                                    </Grid>
+                                    </CardContent>
+                                </Card>
+                            </Paper>
                         </Grid>
                         <Grid item xs={12} md={9} lg={9}>
                             <GoogleMap />

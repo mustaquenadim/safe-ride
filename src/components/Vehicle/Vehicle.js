@@ -12,30 +12,31 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        textDecoration: 'none',
     },
     paper: {
-        padding: theme.spacing(2),
         textAlign: 'center',
-        color: theme.palette.text.secondary,
     },
     media: {
         height: 200,
     },
+    card: {
+        padding: '25px'
+    }
 }));
 
 const Vehicle = (props) => {
     const classes = useStyles();
     const { id, transport, image } = props.vehicle;
-
     return (
         <Grid item xs={12} md={6} lg={3}>
-            <Paper className={classes.paper}>
+            <Paper elevation={3} className={classes.paper}>
                 <Card className={classes.root} component={Link} to={`/destination/${id}`}>
                     <CardActionArea>
-                        <CardMedia className={classes.media} image={image} title={transport} />
-                        <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">{transport}</Typography>
+                        <CardContent className={classes.card}>
+                            <CardMedia className={classes.media} image={image} title={transport} />
                         </CardContent>
+                        <Typography variant="h5" component="h2">{transport}</Typography>
                     </CardActionArea>
                 </Card>
             </Paper>

@@ -9,6 +9,7 @@ import Vehicle from '../Vehicle/Vehicle';
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
+        height: '100vh'
     },
 }));
 
@@ -23,7 +24,7 @@ const Home = () => {
             <CssBaseline />
             <Container>
                 <div className={classes.root}>
-                    <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+                    <Grid container spacing={3} direction="row" justifyContent="center" alignItems="center">
                         {ride.map((vehicle) => (<Vehicle key={vehicle.id} vehicle={vehicle}></Vehicle>))}
                     </Grid>
                 </div>

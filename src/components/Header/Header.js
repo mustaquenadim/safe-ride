@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
     title: {
         flexGrow: 1,
+        textDecoration: 'none'
     },
 }));
 
@@ -23,7 +24,7 @@ const Header = () => {
     return (
         <div className={classes.root}>
             <Toolbar>
-                <Typography variant="h6" className={classes.title}>Safe Ride</Typography>
+                <Typography variant="h6" className={classes.title} component={Link} to="/">Safe Ride</Typography>
                 <Button color="inherit" component={Link} to="/home">Home</Button>
                 <Button color="inherit" component={Link} to="/destination">Destination</Button>
                 <Button color="inherit" component={Link} to="/login">Login</Button>
