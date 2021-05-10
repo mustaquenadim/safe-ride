@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 const FireAuth = () => {
     const classes = useStyles();
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {loggedInUser, setLoggedInUser} = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
     const { from } = location.state || { from: { pathname: '/' } };

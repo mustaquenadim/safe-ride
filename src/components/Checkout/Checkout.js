@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../../App';
 import vehicles from '../../Data/Data.json';
+import GoogleMap from '../GoogleMap/GoogleMap';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -11,7 +12,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Checkout = () => {
-    const [getRide, setRide] = useContext(UserContext);
+    const {getRide, setRide} = useContext(UserContext);
     console.log(getRide);
     const classes = useStyles();
     const { id } = useParams();
@@ -31,7 +32,7 @@ const Checkout = () => {
                             <h1>Checkout</h1>
                         </Grid>
                         <Grid item xs={12} md={9} lg={9}>
-                            
+                            <GoogleMap />
                         </Grid>
                     </Grid>
                 </div>

@@ -5,6 +5,7 @@ import { KeyboardDatePicker, KeyboardTimePicker, MuiPickersUtilsProvider } from 
 import DateFnsUtils from '@date-io/date-fns';
 import { UserContext } from '../../App';
 import { useHistory } from 'react-router-dom';
+import GoogleMap from '../GoogleMap/GoogleMap';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -13,7 +14,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Destination = () => {
-    const [getRide, setRide] = useContext(UserContext);
+    const {getRide, setRide} = useContext(UserContext);
     const history = useHistory();
     const classes = useStyles();
     const btnStyle = {margin: '8px 0'};
@@ -23,7 +24,8 @@ const Destination = () => {
         const journeyInfo = { status: true, from, to, date: selectedDate.getDate() + '/' + (selectedDate.getMonth()+1) + '/' + selectedDate.getFullYear(), Time: selectedDate.getHours() + ":" + selectedDate.getMinutes() };
         setRide(journeyInfo);
         console.log(journeyInfo);
-        history.push('/checkout');
+        console.log(getRide);
+        history.replace({ pathname: "/checkout" });
     };
     const [selectedDate, setSelectedDate] = useState(new Date());
     const handleDateChange = (date) => {
@@ -44,11 +46,11 @@ const Destination = () => {
                                     <KeyboardTimePicker fullWidth variant="inline" margin="normal" id="journey-time" label="Journey Time" value={selectedDate} onChange={handleDateChange} KeyboardButtonProps={{ 'aria-label': 'change time' }} />
                                 </MuiPickersUtilsProvider>
                                 <Button type='submit' color='primary' variant="contained" style={btnStyle} fullWidth>Search</Button>
-                                <input type='submit' value='Search' />
                             </form>
                         </Grid>
                         <Grid item xs={12} md={9} lg={9}>
                             <h1>Google Map</h1>
+                            <GoogleMap />
                         </Grid>
                     </Grid>
                 </div>

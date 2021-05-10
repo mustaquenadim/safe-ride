@@ -16,7 +16,7 @@ const SignIn = ({handleChange}) => {
     const avatarStyle = {backgroundColor: '#1bbd7e'};
     const btnStyle = {margin: '8px 0'};
 
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const {loggedInUser, setLoggedInUser} = useContext(UserContext);
     const history = useHistory();
     const location = useLocation();
     const { from } = location.state || { from: { pathname: '/' } };
