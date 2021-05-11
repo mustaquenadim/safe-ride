@@ -6,10 +6,10 @@ import Grid from '@material-ui/core/Grid';
 import vehicles from '../../Data/Data.json';
 import Vehicle from '../Vehicle/Vehicle';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
-        height: '100vh'
+        backgroundColor: '',
     },
 }));
 

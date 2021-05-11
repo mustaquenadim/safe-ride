@@ -1,12 +1,20 @@
-import { Card, CardContent, Container, CssBaseline, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Card, CardContent, CardMedia, Container, CssBaseline, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 import { Timeline, TimelineItem, TimelineSeparator, TimelineDot, TimelineConnector, TimelineContent } from '@material-ui/lab';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../../App';
 import GoogleMap from '../GoogleMap/GoogleMap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
+    },
+    media: {
+        height: '50px'
+    },
+    paper: {
+        
     },
 }));
 
@@ -20,9 +28,9 @@ const Checkout = () => {
             <CssBaseline />
             <Container>
                 <div className={classes.root}>
-                    <Grid container spacing={3} direction="row" justify="center" alignItems="center">
+                    <Grid container spacing={3} direction="row">
                         <Grid item xs={12} md={3} lg={3}>
-                            <Paper elevation={0} color="primary">
+                            <Paper className={classes.paper} elevation={0} color="primary">
                                 <Timeline>
                                     <TimelineItem>
                                         <TimelineSeparator>
@@ -47,10 +55,18 @@ const Checkout = () => {
                                 <Card className={classes.root} style={{backgroundColor: 'yellow'}}>
                                     <CardContent>
                                     <Grid container spacing={3}>
-                                        <Grid item xs={6} sm={3}></Grid>
-                                        <Grid item xs={6} sm={3}></Grid>
-                                        <Grid item xs={6} sm={3}></Grid>
-                                        <Grid item xs={6} sm={3}></Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <CardMedia className={classes.media} image={getRide.image} title={getRide.transport} />
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <Typography variant="h5" component="h2">{getRide.transport}</Typography>
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <Typography variant="h5" component="h2"><FontAwesomeIcon icon={faCoffee} /> {getRide.capacity}</Typography>
+                                        </Grid>
+                                        <Grid item xs={6} sm={3}>
+                                            <Typography variant="h5" component="h2">{getRide.price}$</Typography>
+                                        </Grid>
                                     </Grid>
                                     </CardContent>
                                 </Card>
